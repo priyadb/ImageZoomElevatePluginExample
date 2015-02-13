@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>Image Zoom and LightBox Demo</title>
+	<link href="jquery.fancybox.css" rel="stylesheet" type="text/css" />  
+	<script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+	<script src='jquery.elevateZoom-2.5.3.min.js'></script>
+	<script src='jquery.fancybox.js'></script>
+	<style type="text/css">
+	#gallery_01 img{border:2px solid white;}
+	.active img{border:2px solid #333 !important;}
+	</style>
+</head>
+<body style="text-align:center;">
+<h1>Image Zoom with FancyBox support using Elevate Zoom Plugin</h1>
+<img id="img_01" src="small/image_1.jpg" data-zoom-image="large/image_1.jpg"/>
+<div id="gallery_01"> 
+  <a href="#" data-image="small/image_1.jpg" data-zoom-image="large/image_1.jpg">
+    <img id="img_01" src="thumb/image_1.jpg" />
+  </a>
+  
+  <a href="#" data-image="small/image_2.jpg" data-zoom-image="large/image_2.jpg">
+    <img id="img_01" src="thumb/image_2.jpg" />
+  </a>
+
+  <a href="#" data-image="small/image_3.jpg" data-zoom-image="large/image_3.jpg">
+    <img id="img_01" src="thumb/image_3.jpg" />
+  </a>
+
+  <a href="#" data-image="small/image_4.jpg" data-zoom-image="large/image_4.jpg">
+    <img id="img_01" src="thumb/image_4.jpg" />
+  </a>
+</div>
+<h4>Image Courtesy: <a href="https://www.facebook.com/amarscomposition">Amarnath Eswar</a></h4>
+<p><b>1. Mouse hover to see zoom effect</b></p>
+<p><b>2. Click on the main image to open lighbox</b></p>
+<script>
+$("#img_01").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: 'active'}); 
+
+//pass the images to Fancybox
+$("#img_01").bind("click", function(e) {  
+  var ez =   $('#img_01').data('elevateZoom');	
+	$.fancybox(ez.getGalleryList());
+  return false;
+});
+</script>
+</body>
+</html>
